@@ -1,2 +1,5 @@
 py_env/
-
+.idea/
+__pycache__/
+project/notes/__pycache__/
+project/project/__pycache__/
