@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 import datetime
@@ -10,7 +12,7 @@ from django.utils import timezone
 class Note(models.Model):
     note_heading = models.CharField(max_length=100, default=' ')
     note_text = models.CharField(max_length=700)
-    pub_date = models.DateTimeField('date added')
+    pub_date = models.DateTimeField('date added', default= datetime.datetime.now())
 
     def __str__(self):
         return self.note_heading
@@ -33,3 +35,4 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+

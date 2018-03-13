@@ -1,33 +1,31 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hey, it`s me</h1>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% extends "base.html" %}
+
+{% block title %}Here is the start page{% endblock %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <h2>Add new note</h2>
 
-    <form action="http://localhost:8000/notes/" method="post">
+    <form method="post" class="add_note_form">
     {% csrf_token %}
-        <input type="text" name="note_title" id="note_title" value="" />
-        <label for="note_title">Enter title</label><br />
+    <div class="row">
+        {{ form.as_p }}
+    </div>
 
-        <input type="text" name="note_text" id="note_text" value="" />
-        <label for="note_title">Enter note text</label><br />
-        <input type="submit" value="Add note" />
+
+        <input type="submit" value='Add note' />
     </form>
 
 
-    <ol>
+    <ul>
+        <br><br>
+        <hr>
     {% for note in latest_notes_list%}
-        <li>{{note}}</li>
-    {%endfor%}
-    </ol>
 
-</body>
-</html>
+        <a href="/notes/{{note.id}}"><li>{{note}}</li></a>
+        <span>{{note.note_text}}</span>
+        <hr>
+    {%endfor%}
+    </ul>
+{% endblock %}
