@@ -23,6 +23,9 @@ class Note(models.Model):
     def __str__(self):
         return str(self.pub_author.username) + '  .....  ' + self.note_heading
 
+    def __repr__(self):
+        return self.note_heading
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')

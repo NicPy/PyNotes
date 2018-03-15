@@ -51,6 +51,7 @@ def index(request):
             context = {'latest_notes_list': latest_notes_list,
                        'form': form,
                        'hey': 'hey hey hey',
+                       # 'exerpt': ""
                        # 'username': username,
 
                        }

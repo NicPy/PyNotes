@@ -14,8 +14,8 @@
         <div class="row">
 
             <div class="col-md-9">
-                <a href="/notes/{{note.id}}"><li><h2>{{note}}</h2></li></a>
-                <span>{{note.note_text}}</span>
+                <a href="/notes/{{note.id}}"><li><h2>{{note.note_heading}}</h2></li></a>
+                <span>{{note.note_text |truncatewords:2}}</span>
             </div>
             <div class="col-md-3">
                 <a class="btn btn-default" href="{% url 'note_remove' pk=note.pk %}"> Delete this note</a>
