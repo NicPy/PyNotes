@@ -1,7 +1,10 @@
 {%extends "base.html"%}
 {%block content%}
 <div class="col-md-6 col-md-offset-3">
-
+    <h3>RLEASE </h3>
+    <a href="{% url 'signup' %}"><h3 href="#">REGISTER</h3></a>
+    <h3>OR</h3>
+    <h3>LOGIN PLEASE TO CONTINUE</h3>
 <form action="#" method="POST">
     <div class="form-group">
         {% csrf_token %}
@@ -20,6 +23,8 @@
 
 </form>
 </div>
-    
+
+
 {%endblock content%}
 
+w

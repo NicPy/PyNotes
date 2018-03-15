@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-  <h2>Sign up</h2>
+
+  <h3>SIGN UP </h3>
+
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -18,4 +21,6 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+ <h3>OR</h3>
+  <a href="{% url 'login_view' %}"><h3>LOGIN</h3></a>
 {% endblock %}

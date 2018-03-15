@@ -3,21 +3,24 @@
 
 {% block title %} {{note}} {% endblock %}
 
-{% block content %}
+{% block single_page %}
 <a class="btn btn-default" href="{% url 'note_remove' pk=note.pk %}"><span class="glyphicon glyphicon-remove"> Delete this note</span></a>
 <hr>
-<div class="row">
-    <br>
-    <div class=" col-md-6">
-        <h2 class="">{{ note }}</h2>
+<div class="container">
 
+    <div class="row">
         <br>
-        {{note.note_text}}
-        <br>
-        <br>
-        <span><b>Published on </b> {{note.pub_date}}</span>
+        <div class=" col-md-6">
+            <h2 class="">{{ note }}</h2>
+
+            <br>
+            {{note.note_text}}
+            <br>
+            <br>
+            <span><b>Published on </b> {{note.pub_date}}</span>
+        </div>
+
     </div>
-
 </div>
 
-{% endblock content%}
+{% endblock %}

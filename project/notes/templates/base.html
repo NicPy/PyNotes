@@ -1,26 +1,25 @@
+{%load static%}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'notes/style.css'%}">
     <title>
          {% block title %}Notes{% endblock %}
     </title>
 </head>
-<body>
+<body class="bg_green">
 
     <h1><a href="{% url 'index' %}">Go back to homepage</a></h1>
     <span class="text-center">
         {% if user.is_authenticated %}
 
         <h1>Hello {{user.username}}</h1>
-            <a href="{% url 'logout_view' %}"><h3 href="#">Exit</h3></a>
-        {%else%}
-            <!--<a href="{% url 'login_view' %}"><h3 href="#">Login</h3></a>-->
-        <h3>LOGIN PLEASE TO CONTINUE</h3>
+            <a href="{% url 'logout_view' %}"><h3>Exit</h3></a>
+
 
         {% endif %}
 
@@ -28,8 +27,14 @@
 
     </span>
 
-    <div class="container">
-        {% block content %}{% endblock %}
+    <div class="container-fluid">
+        {% block single_page%}{%endblock%}
+        <div class="col-md-6">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+            {% block addnote%}{%endblock%}
+        </div>
     </div>
 
 

@@ -2,11 +2,32 @@
 
 {% block title %}Here is the start page{% endblock %}
 
+
+
 {% block content %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <h2>Add new note</h2>
+    <ul>
 
+    {% for note in latest_notes_list%}
+
+        <div class="row">
+
+            <div class="col-md-9">
+                <a href="/notes/{{note.id}}"><li><h2>{{note}}</h2></li></a>
+                <span>{{note.note_text}}</span>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-default" href="{% url 'note_remove' pk=note.pk %}"> Delete this note</a>
+            </div>
+
+        </div>
+        <hr>
+    {%endfor%}
+    </ul>
+{% endblock %}
+
+{%block addnote%}
     <form method="post" class="add_note_form">
     {% csrf_token %}
     <div class="row">
@@ -16,16 +37,4 @@
 
         <input type="submit" value='Add note' />
     </form>
-
-
-    <ul>
-        <br><br>
-        <hr>
-    {% for note in latest_notes_list%}
-
-        <a href="/notes/{{note.id}}"><li>{{note}}</li></a>
-        <span>{{note.note_text}}</span>
-        <hr>
-    {%endfor%}
-    </ul>
-{% endblock %}
+{%endblock%}

@@ -5,6 +5,8 @@ from django.contrib import  auth
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
 from .forms import AddNoteForm
+from django import forms
+
 
 
 
@@ -26,7 +28,14 @@ def index(request):
     else:
 
         if request.method == 'POST':
-            form = AddNoteForm(request.POST)
+            initial = {'pub_author': request.user.id,
+                       'note_text': request.POST['note_text'].replace("\n\r", "<hr />"),
+                       }
+            print(request.POST['note_text'])
+            print("--------------------------------------------------------------------------")
+
+
+            form = AddNoteForm(request.POST or None, initial = initial )
             if form.is_valid():
                 model_instance = form.save(commit=False)
                 model_instance.timestamp = timezone.now()
@@ -34,10 +43,11 @@ def index(request):
                 return redirect('/notes/')
 
         else:
-            username = request.user.username
+            user = request.user
 
-            form = AddNoteForm()
-            latest_notes_list = Note.objects.order_by('-pub_date')[:4]
+            initial = {'pub_author': request.user.id}
+            form = AddNoteForm(request.POST or None, initial=initial)
+            latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:4]
             context = {'latest_notes_list': latest_notes_list,
                        'form': form,
                        'hey': 'hey hey hey',
@@ -52,6 +62,7 @@ def detail(request, note_id):
     #     instance = SomeModel.objects.get(id=id)
     #     instance.delete()
     note = get_object_or_404(Note, pk=note_id)
+    print(note.note_text)
     return render(request, 'detail.html', {'note': note})
 
 def note_remove(request, pk):
