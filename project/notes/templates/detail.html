@@ -14,7 +14,7 @@
             <h2 class="">{{ note }}</h2>
 
             <br>
-            {{note.note_text| linebreaksbr}}
+            {{note.note_text| safe|escape | linebreaksbr}}
             <br>
             <br>
             <span><b>Published on </b> {{note.pub_date}}</span>

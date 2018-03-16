@@ -15,7 +15,7 @@
 
             <div class="col-md-9">
                 <a href="/notes/{{note.id}}"><li><h2>{{note.note_heading}}</h2></li></a>
-                <span>{{note.note_text |truncatewords:2}}</span>
+                <span>{{note.note_text | safe|escape |truncatechars:25}}</span>
             </div>
             <div class="col-md-3">
                 <a class="btn btn-default" href="{% url 'note_remove' pk=note.pk %}"> Delete this note</a>
@@ -33,6 +33,9 @@
     <div class="row">
         {{ form.as_p }}
     </div>
+        <script>
+			CKEDITOR.replace( 'note_text' );
+		</script>
 
 
         <input type="submit" value='Add note' />
