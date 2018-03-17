@@ -47,7 +47,7 @@ def index(request):
 
             initial = {'pub_author': request.user.id}
             form = AddNoteForm(request.POST or None, initial=initial)
-            latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:4]
+            latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:10]
             context = {'latest_notes_list': latest_notes_list,
                        'form': form,
                        'hey': 'hey hey hey',

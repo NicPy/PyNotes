@@ -1,6 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/* classes with font */
+.search-container,
+header .user-area{
+    font-family: 'Indie Flower', cursive;
+
+}
+/**/
+.no-padding{
+    padding: 0px !important;
+}
+
 .top-bar{
     background: #32BE64 !important;
-    padding: 30px 0px
+    padding: 20px 0px
    /* color: white;*/
 }
 
@@ -12,8 +27,27 @@
     max-width: 250px;
 }
 
-header .user-area{
+header .user-area,
+.search-container{
     font-size: 25px;
     color: white;
-    font-family: 'Indie Flower', cursive;
+}
+
+/************    HOMEPAGE SECTIONS    **************/
+.folders-section{
+    background: red;
+}
+
+.recent-notes-section{
+    height: 530px;
+    overflow: auto;
+    overflow-x: hidden;
+
+}
+
+.action-section{
+    height: 530px;
+    overflow: auto;
+    overflow-x: hidden;
+    padding: 0px 35px 10px 35px;
 }
