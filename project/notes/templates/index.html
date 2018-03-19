@@ -12,17 +12,21 @@
 <!-- ********************************** FIRST COLUMN **********************************        -->
 
            <div class="col-md-2 folders-section">
-
+                <div class="all-notes-heading">
+                    <p>Your folders<span class="glyphicon glyphicon-list-alt"></span></p>
+                </div>
             </div>
 <!-- ********************************** SECOND COLUMN **********************************        -->
 
             <div class="col-md-4 recent-notes-section">
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                <ul>
+                <div class="all-notes-heading">
+                    <p>All notes<span class="glyphicon glyphicon-list-alt"></span></p>
+                </div>
                 {% for note in latest_notes_list%}
-                    <div class="row">
+                    <div class="row no-paddings ">
                         <div class="col-md-9">
-                            <a href="/notes/{{note.id}}"><li><h2>{{note.note_heading}}</h2></li></a>
+                            <a href="/notes/{{note.id}}"><h4>{{note.note_heading}}</h4></a>
                             <span>{{note.note_text | safe|escape |truncatechars:25}}</span>
                         </div>
                         <div class="col-md-3">
@@ -34,11 +38,12 @@
                     <hr>
 
                 {%endfor%}
-                </ul>
-
             </div>
 <!-- ********************************** THIRD COLUMN **********************************        -->
             <div class="col-md-6 action-section">
+                <div class="all-notes-heading">
+                    <p>Add new note<span class="glyphicon glyphicon-list-alt"></span></p>
+                </div>
                 <form method="post" class="add_note_form">
                     {% csrf_token %}
                     <div class="row">

@@ -4,7 +4,8 @@
 }
 /* classes with font */
 .search-container,
-header .user-area{
+header .user-area,
+.all-notes-heading {
     font-family: 'Indie Flower', cursive;
 
 }
@@ -50,4 +51,22 @@ header .user-area,
     overflow: auto;
     overflow-x: hidden;
     padding: 0px 35px 10px 35px;
+}
+
+/*************    RECENT NOTES SECTION****************/
+.recent-notes-section h4{
+    margin: 0px;
+}
+
+.all-notes-heading{
+    padding: 6px 15px;
+    margin: 5px 0px 17px 0px;
+    -webkit-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
+}
+
+.all-notes-heading p{
+    font-size: 25px;
+    margin: 0px;
 }
