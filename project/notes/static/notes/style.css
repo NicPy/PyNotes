@@ -1,13 +1,19 @@
 *{
     margin: 0px;
     padding: 0px;
+    transition: 0.1s;
 }
 /* classes with font */
 .search-container,
 header .user-area,
-.all-notes-heading {
+.all-notes-heading,
+.add_note_form label,
+.primary-font{
     font-family: 'Indie Flower', cursive;
 
+}
+.secondary-font{
+font-family: 'Quicksand', sans-serif;
 }
 /**/
 .no-padding{
@@ -35,38 +41,146 @@ header .user-area,
 }
 
 /************    HOMEPAGE SECTIONS    **************/
-.folders-section{
-    background: red;
+.folders-section:after{
+    right: 4px;
+    top: 6px;
+    display: inline-block;
+    position: absolute;
+    content: "";
+    border-right: 1px solid #dad7d7;
+    height: calc(100rem - 125px);
+    height: calc(100rem - 125px);
+
+
 }
 
-.recent-notes-section{
-    height: 530px;
+.all-notes{
+    height: calc(100rem - 184px);
     overflow: auto;
     overflow-x: hidden;
 
 }
 
 .action-section{
-    height: 530px;
+    height: calc(100rem - 125px);
     overflow: auto;
     overflow-x: hidden;
     padding: 0px 35px 10px 35px;
 }
 
-/*************    RECENT NOTES SECTION****************/
-.recent-notes-section h4{
+.recent-notes-section .heading{
     margin: 0px;
+    font-size: 17px;
+    color: #000000;
 }
 
 .all-notes-heading{
+
     padding: 6px 15px;
-    margin: 5px 0px 17px 0px;
+    margin: 5px 0px 10px 0px;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.75);
 }
 
+
+
 .all-notes-heading p{
     font-size: 25px;
     margin: 0px;
+}
+
+ .add_note_form label{
+    font-size: 22px;
+    text-decoration: underline;
+ }
+
+input.date{
+    display: inline-block;
+    width: auto;
+}
+
+.add_note_form{
+    margin-top: 60px;
+}
+.recent-notes-section .note{
+    border-bottom: 1px solid #dad7d7;
+    padding: 11px 5px;
+}
+
+.recent-notes-section .note span{
+    color: #a9a9a9;
+
+}
+
+.recent-notes-section .note:hover{
+    background: #36BE67;
+    color: white;
+    transition: 0.s;
+}
+.recent-notes-section .note:hover span{
+    color: black;
+}
+.recent-notes-section .note:hover a p.heading {
+color: white !important;
+text-decoration: underline;
+}
+
+.note .glyphicon {
+color: white !important;
+}
+
+.add_cat{
+    margin-bottom: 7px;
+}
+.add-cat input::placeholder{
+    color:#36BE67 !important;
+}
+.add-cat input:focus::placeholder{
+    color:black !important;
+    padding-left: 64px !important;
+    display: block !important;
+    position: relative;
+    bottom: -11px;
+    transition: 2s !important;
+    font-size: calc(interhit + 1px);
+    z-index: 50;
+
+}
+.repr{
+    padding: 10px;
+    font-size: 23px;
+}
+.repr:before{
+    content: "";
+    left: -25px;
+    height: 17px;
+    top: 2px;
+    width: 3px;
+    position: relative;
+    display: inline-block;
+    background: #5bb85c;
+    transition: 0.5s;
+}
+.repr:hover:before{
+    content: "";
+    left: -7px;
+    height: 17px;
+    top: 2px;
+    width: 3px;
+    position: relative;
+    display: inline-block;
+    background: #5bb85c;
+    transition: 0.5s;
+}
+
+.repr:hover{
+    cursor: pointer
+}
+.active{
+    background: #EFAD55;
+}
+.repr p{
+    display: inline-block;
+    padding-left: 8px;
 }

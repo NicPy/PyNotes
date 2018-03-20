@@ -16,8 +16,9 @@ from django.utils import timezone
 class Note(models.Model):
 
     note_heading = models.CharField(max_length=100, default=' ')
-    note_text = models.TextField(max_length=700)
-    pub_date = models.DateTimeField('date added', default= datetime.datetime.now())
+    note_text = models.TextField(max_length=4000)
+    note_category = models.ForeignKey('Category',  blank=True,  null=True, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField('date added', default= datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
     pub_author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -25,6 +26,12 @@ class Note(models.Model):
 
     def __repr__(self):
         return self.note_heading
+
+class Category(models.Model):
+    name = models.TextField(max_length=255, default='')
+
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

@@ -12,9 +12,25 @@
 <!-- ********************************** FIRST COLUMN **********************************        -->
 
            <div class="col-md-2 folders-section">
-                <div class="all-notes-heading">
+                <div class="all-notes-heading ">
                     <p>Your folders<span class="glyphicon glyphicon-list-alt"></span></p>
                 </div>
+                <form method="post" class="">
+                   {% csrf_token %}
+                   <!--<label for="id_name" class="text-center primary-font add-cat">Add new folder</label>-->
+                   <div class="input-group col-xs-offset-1 col-xs-11 row  add-cat">
+                       {{category_form}}
+
+                        <span class="input-group-btn">
+                            <button type="submit" name="add_category" class="btn btn-success primary-font">Add</button>
+                        </span>
+                   </div>
+                    <!--{{category_form.as_p}}-->
+                   <!--<input type="submit" value="Add" class="btn btn-success primary-font glyphicon glyphicon-remove">-->
+               </form>
+               {% for category in categories%}
+                   <div class="repr"><span class="glyphicon glyphicon-folder-close"></span> <p class="secondary-font">{{category.name}}</p> </div>
+               {%endfor%}
             </div>
 <!-- ********************************** SECOND COLUMN **********************************        -->
 
@@ -23,21 +39,24 @@
                 <div class="all-notes-heading">
                     <p>All notes<span class="glyphicon glyphicon-list-alt"></span></p>
                 </div>
-                {% for note in latest_notes_list%}
-                    <div class="row no-paddings ">
-                        <div class="col-md-9">
-                            <a href="/notes/{{note.id}}"><h4>{{note.note_heading}}</h4></a>
+                <div class="all-notes">
+                    {% for note in latest_notes_list%}
+                    <div class="row  note">
+                        <div class="col-md-10">
+                            <a href="/notes/{{note.id}}"><p class="heading">{{note.note_heading}}</p></a>
                             <span>{{note.note_text | safe|escape |truncatechars:25}}</span>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <a class="btn btn-danger" href="{% url 'note_remove' pk=note.pk %}">
                                 <span class="glyphicon glyphicon-remove	Try it"></span>
                             </a>
                         </div>
                     </div>
-                    <hr>
+
 
                 {%endfor%}
+                </div>
+
             </div>
 <!-- ********************************** THIRD COLUMN **********************************        -->
             <div class="col-md-6 action-section">
@@ -54,7 +73,7 @@
                     </script>
 
 
-                    <input type="submit" value='Add note' />
+                    <input type="submit" name="add_note" value='Add note' class="btn btn-success primary-font"/>
                 </form>
             </div>
         </div>

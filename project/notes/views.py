@@ -4,17 +4,14 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import  auth
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
-from .forms import AddNoteForm
+from .forms import AddNoteForm, AddCategoryForm
 from django import forms
+from django.http import HttpResponse
 
-
-
+from .models import Note, Category
 
 
 # Create your views here.
-from django.http import HttpResponse
-
-from .models import Note
 
 
 # @login_required()
@@ -27,7 +24,7 @@ def index(request):
 
     else:
 
-        if request.method == 'POST':
+        if request.method == 'POST' and 'add_note' in request.POST:
             initial = {'pub_author': request.user.id,
                        'note_text': request.POST['note_text'].replace("\n\r", "<hr />"),
                        }
@@ -42,15 +39,25 @@ def index(request):
                 model_instance.save()
                 return redirect('/notes/')
 
+        if request.method == 'POST' and 'add_category' in request.POST:
+
+            category_form = AddCategoryForm(request.POST or None)
+            if category_form.is_valid():
+                category_form.save()
+                return redirect('/notes/')
+
         else:
             user = request.user
 
             initial = {'pub_author': request.user.id}
             form = AddNoteForm(request.POST or None, initial=initial)
+            category_form = AddCategoryForm(request.POST or None)
             latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:10]
+            categories = Category.objects.order_by('id')
             context = {'latest_notes_list': latest_notes_list,
                        'form': form,
-                       'hey': 'hey hey hey',
+                       'category_form': category_form,
+                       'categories': categories,
                        # 'exerpt': ""
                        # 'username': username,
 
