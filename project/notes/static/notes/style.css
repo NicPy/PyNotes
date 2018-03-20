@@ -10,10 +10,13 @@ header .user-area,
 .add_note_form label,
 .primary-font{
     font-family: 'Indie Flower', cursive;
-
 }
 .secondary-font{
 font-family: 'Quicksand', sans-serif;
+}
+
+.hidden{
+    display: none;
 }
 /**/
 .no-padding{
@@ -149,7 +152,7 @@ color: white !important;
 }
 .repr{
     padding: 10px;
-    font-size: 23px;
+    font-size: 19px;
 }
 .repr:before{
     content: "";
@@ -181,6 +184,6 @@ color: white !important;
     background: #EFAD55;
 }
 .repr p{
-    display: inline-block;
+    display: inline;
     padding-left: 8px;
 }

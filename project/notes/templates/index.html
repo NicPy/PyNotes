@@ -39,13 +39,16 @@
                 <div class="all-notes-heading">
                     <p>All notes<span class="glyphicon glyphicon-list-alt"></span></p>
                 </div>
+
+
                 <div class="all-notes">
                     {% for note in latest_notes_list%}
                     <div class="row  note">
-                        <div class="col-md-10">
-                            <a href="/notes/{{note.id}}"><p class="heading">{{note.note_heading}}</p></a>
+                        <div class="col-md-10 action-tch" data-href="http://localhost:8000/notes/{{note.id}}">
+                            <a href1="/notes/{{note.id}}" ><p class="  heading">{{note.note_heading}}</p></a>
                             <span>{{note.note_text | safe|escape |truncatechars:25}}</span>
                         </div>
+                         <!--"/notes/{{note.id}}"-->
                         <div class="col-md-1">
                             <a class="btn btn-danger" href="{% url 'note_remove' pk=note.pk %}">
                                 <span class="glyphicon glyphicon-remove	Try it"></span>
@@ -59,10 +62,13 @@
 
             </div>
 <!-- ********************************** THIRD COLUMN **********************************        -->
+
             <div class="col-md-6 action-section">
                 <div class="all-notes-heading">
                     <p>Add new note<span class="glyphicon glyphicon-list-alt"></span></p>
                 </div>
+
+                <div id="ajax-note"></div>
                 <form method="post" class="add_note_form">
                     {% csrf_token %}
                     <div class="row">
@@ -80,6 +86,27 @@
     </div>
 </section>
 
+
+<script type="text/javascript">
+    $('.action-tch').click(function(){
+         <!--alert('I hate tomatoes.');-->
+        console.log(this.dataset.href)
+        $('.action-tch').removeClass('active');
+        $(this).addClass('active');
+        $('.action-section form').addClass('hidden');
+        $('.all-notes-heading span ').attr('class', 'glyphicon glyphicon-plus-sign');
+        $('.action-section all-notes-heading span').attr('class', 'glyphicon glyphicon-plus-sign');
+        $('#ajax-note').load(this.dataset.href);
+     });
+
+    $('.add_note').click(function(){
+
+    });
+
+        <!--$('.action-tch').first().click();-->
+
+
+</script>
 {% endblock %}
 
 
