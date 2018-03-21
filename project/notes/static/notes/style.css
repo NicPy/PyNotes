@@ -18,6 +18,9 @@ font-family: 'Quicksand', sans-serif;
 .hidden{
     display: none;
 }
+.visible{
+    display: block !important;
+}
 /**/
 .no-padding{
     padding: 0px !important;
@@ -133,6 +136,10 @@ text-decoration: underline;
 color: white !important;
 }
 
+.note{
+
+}
+
 .add_cat{
     margin-bottom: 7px;
 }
@@ -177,13 +184,56 @@ color: white !important;
     transition: 0.5s;
 }
 
-.repr:hover{
+.action-section all-notes-heading:
+{
+}
+.repr:hover,
+.note,
+.action-section .all-notes-heading{
     cursor: pointer
 }
 .active{
     background: #EFAD55;
 }
+
+.active-grey{
+background: #e2e2e2;
+}
 .repr p{
     display: inline;
     padding-left: 8px;
+}
+
+.add-note p{
+    color: green;
+    transition: 0.6s;
+
+}
+.add-note:hover p{
+    padding-left: 35%;
+    transition: 0.8s;
+}
+
+.add-note:hover{
+-webkit-box-shadow: 0px 2px 18px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 2px 18px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 2px 18px -1px rgba(0,0,0,0.75);
+}
+.folders-section .note{
+    margin: 1px 5px 0px 43px;
+    padding: 4px 4px 4px 10px;
+    border: 1px solid #EFAD55;
+    text-transform: uppercase;
+}
+.folders-section .note:hover{
+    -webkit-box-shadow: -3px 0px 5px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: -3px 0px 5px -1px rgba(0,0,0,0.75);
+box-shadow: -3px 0px 5px -1px rgba(0,0,0,0.75);
+}
+.folders-section .note a{
+    color: black;
+}
+
+.wrapper{
+display: none;
 }

@@ -52,13 +52,18 @@ def index(request):
             initial = {'pub_author': request.user.id}
             form = AddNoteForm(request.POST or None, initial=initial)
             category_form = AddCategoryForm(request.POST or None)
-            latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:10]
+            latest_notes_list = Note.objects.filter(pub_author = user).order_by('-pub_date')[:12]
             categories = Category.objects.order_by('id')
+
+
+
+
+
             context = {'latest_notes_list': latest_notes_list,
                        'form': form,
                        'category_form': category_form,
                        'categories': categories,
-                       # 'exerpt': ""
+                       # 'cat-posts': get_notes(),
                        # 'username': username,
 
                        }

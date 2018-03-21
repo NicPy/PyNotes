@@ -4,26 +4,28 @@
 {% block title %} {{note}} {% endblock %}
 
 {% block single_page %}
-<hr>
-<div class="container">
+<div class="row">
+    <br>
+    <div class=" col-md-12">
+        <h2 class="">{{ note.note_heading }}</h2>
 
-    <div class="row">
         <br>
-        <div class=" col-md-6">
-            <h2 class="">{{ note.note_heading }}</h2>
-
-            <br>
-            {{note.note_text| safe|escape | linebreaksbr}}
-            <br>
-            <br>
-            <span><b>Published on </b> {{note.pub_date}}</span>
-        </div>
-        <div class="col-md-offset-2 col-md-4">
-           <a class="btn btn-danger" href="{% url 'note_remove' pk=note.pk %}"><span class="glyphicon glyphicon-remove"> Delete this note</span></a>
-
-        </div>
-
+        {{note.note_text| safe|escape | linebreaksbr}}
+        <br>
+        <br>
+        <span><b>Published on </b> {{note.pub_date}}</span>
     </div>
 </div>
+
+    <div class="row note-bottom-bar">
+        <hr>
+        <a class="btn btn-danger" href="{% url 'note_remove' pk=note.pk %}"><span class="glyphicon glyphicon-remove"></span><span> Delete this note</span></a>
+
+    </div>
+
+
+
+
+
 
 {% endblock %}

@@ -30,6 +30,11 @@ class Note(models.Model):
 class Category(models.Model):
     name = models.TextField(max_length=255, default='')
 
+    def get_notes(self):
+        # print(self.name)
+        return Note.objects.filter(note_category=self.id)
+        # return [self.name, self.name, Note.objects.filter(note_category = self.id)]
+
     def __str__(self):
         return self.name
 

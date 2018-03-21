@@ -16,7 +16,7 @@
   crossorigin="anonymous"></script>
 
 
-    <script src="https://cdn.ckeditor.com/4.9.0/basic/ckeditor.js"></script>
+    <!--<script src="https://cdn.ckeditor.com/4.9.0/basic/ckeditor.js"></script>-->
 
 
     <title>
@@ -66,9 +66,9 @@
     {% block content %}{% endblock %}
     {% block addnote%}{%endblock%}
 
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body>
-
+    <script src="{%static 'js/script.js'%}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 </html>
 
 {%endif%}

@@ -28,8 +28,19 @@
                     <!--{{category_form.as_p}}-->
                    <!--<input type="submit" value="Add" class="btn btn-success primary-font glyphicon glyphicon-remove">-->
                </form>
-               {% for category in categories%}
-                   <div class="repr"><span class="glyphicon glyphicon-folder-close"></span> <p class="secondary-font">{{category.name}}</p> </div>
+                   {% for category in categories%}
+                       <div class="repr"><span class="glyphicon glyphicon-folder-close"></span> <p class="secondary-font">{{category.name}}</p> </div>
+
+                    <div class="wrapper">
+
+                        {%for cat_note in category.get_notes%}
+                            <div class="row active  note action-tch" data-href="http://localhost:8000/notes/{{cat_note.id}}">
+                                <a href1="/notes/{{note.id}}" >{{cat_note.note_heading}}</a>
+                            </div>
+                            <!--<a href="{}">{{cat_note}}</a>-->
+                        {%endfor%}
+                    </div>
+
                {%endfor%}
             </div>
 <!-- ********************************** SECOND COLUMN **********************************        -->
@@ -43,10 +54,12 @@
 
                 <div class="all-notes">
                     {% for note in latest_notes_list%}
-                    <div class="row  note">
-                        <div class="col-md-10 action-tch" data-href="http://localhost:8000/notes/{{note.id}}">
+                    <div class="row  note action-tch" data-href="http://localhost:8000/notes/{{note.id}}">
+                        <div class="col-md-10 ">
                             <a href1="/notes/{{note.id}}" ><p class="  heading">{{note.note_heading}}</p></a>
-                            <span>{{note.note_text | safe|escape |truncatechars:25}}</span>
+                            <!--<span>{{note.note_text | safe|escape |truncatechars:25}}</span>-->
+                            <span>{{note.note_text | truncatechars:25}}</span>
+                            <!--<span>{{note.note_text |truncatechars:25}}</span>-->
                         </div>
                          <!--"/notes/{{note.id}}"-->
                         <div class="col-md-1">
@@ -74,10 +87,9 @@
                     <div class="row">
                         {{ form.as_p }}
                     </div>
-                    <script>
-                        CKEDITOR.replace( 'note_text' );
-                    </script>
-
+                    <!--<script>-->
+                        <!--CKEDITOR.replace( 'note_text' );-->
+                    <!--</script>-->
 
                     <input type="submit" name="add_note" value='Add note' class="btn btn-success primary-font"/>
                 </form>
@@ -88,20 +100,20 @@
 
 
 <script type="text/javascript">
-    $('.action-tch').click(function(){
-         <!--alert('I hate tomatoes.');-->
-        console.log(this.dataset.href)
-        $('.action-tch').removeClass('active');
-        $(this).addClass('active');
-        $('.action-section form').addClass('hidden');
-        $('.all-notes-heading span ').attr('class', 'glyphicon glyphicon-plus-sign');
-        $('.action-section all-notes-heading span').attr('class', 'glyphicon glyphicon-plus-sign');
-        $('#ajax-note').load(this.dataset.href);
-     });
+    <!--$('.action-tch').click(function(){-->
+         <!--&lt;!&ndash;alert('I hate tomatoes.');&ndash;&gt;-->
+        <!--console.log(this.dataset.href)-->
+        <!--$('.action-tch').removeClass('active');-->
+        <!--$(this).addClass('active');-->
+        <!--$('.action-section form').addClass('hidden');-->
+        <!--$('.all-notes-heading span ').attr('class', 'glyphicon glyphicon-plus-sign');-->
+        <!--$('.action-section all-notes-heading span').attr('class', 'glyphicon glyphicon-plus-sign');-->
+        <!--$('#ajax-note').load(this.dataset.href);-->
+     <!--});-->
 
-    $('.add_note').click(function(){
+    <!--$('.add_note').click(function(){-->
 
-    });
+    <!--});-->
 
         <!--$('.action-tch').first().click();-->
 
