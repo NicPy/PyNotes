@@ -10,6 +10,9 @@ urlpatterns = [
     url(r'^login/$', views.login_view, name='login_view'),
     url(r'^logout/$', views.logout_view, name='logout_view'),
     # url(r'^login_form', )
+    url(r'^api/get_search/', views.get_search, name='get_search'),
+    url(r'^search/$', views.search, name='search'),
+
 
     path('', views.index, name='index'),
     path('<int:note_id>/', views.detail, name='detail'),

@@ -33,3 +33,11 @@ $('.folders-section .repr').click(function(){
     };
 
 });
+
+$(function() {
+  $("#top-search").autocomplete({
+    source: "/notes/api/get_search/",
+    minLength: 2,
+  });
+
+});

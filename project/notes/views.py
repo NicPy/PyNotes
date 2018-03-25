@@ -139,6 +139,35 @@ def results(request, question_id):
 
 def add_note(request, note_id):
     note = get_object_or_404(Note, pk=note_id)
+
+def get_search(request):
+    if request.is_ajax():
+        import json
+        q = request.GET.get('term', '')
+        data_for_search = Note.objects.filter(note_heading__icontains=q)[:20]
+        results = []
+        for data in data_for_search:
+            data_json = {}
+            data_json['id'] = data.id
+            data_json['label'] = data.note_heading
+            data_json['value'] = data.note_heading
+            results.append(data_json)
+        final_data = json.dumps(results)
+    else:
+        final_data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(final_data, mimetype)
+
+def search(request):
+    if request:
+        q = request.GET.get['search']
+        posts = Note.objects.filter(note_heading__icontains=q) | \
+                Note.objects.filter(note_texr__icontains=q) | \
+                Note.objects.filter(category__icontains=q)
+        return render('search/results.html', {'posts':posts, 'q':q})
+    else:
+        return render(request, 'index.html')
+
 #     # try:
 #     #     note_title = question.choice_set.get(pk=request.POST['note_title'])
 #     #     note_text = question.choice_set.get(pk=request.POST['note_text'])
