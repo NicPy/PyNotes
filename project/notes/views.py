@@ -159,12 +159,12 @@ def get_search(request):
     return HttpResponse(final_data, mimetype)
 
 def search(request):
-    if request:
-        q = request.GET.get['search']
-        posts = Note.objects.filter(note_heading__icontains=q) | \
-                Note.objects.filter(note_texr__icontains=q) | \
-                Note.objects.filter(category__icontains=q)
-        return render('search/results.html', {'posts':posts, 'q':q})
+    if request.GET['search']:
+        q = request.GET['search']
+        posts = Note.objects.filter(pub_author = request.user, note_heading__icontains=q) | \
+                Note.objects.filter(pub_author = request.user, note_text__icontains=q)
+                # Note.objects.filter(pub_author = request.user, category__icontains=q)
+        return render(request, 'results.html', {'posts':posts, 'q':q})
     else:
         return render(request, 'index.html')
 

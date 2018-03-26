@@ -35,10 +35,10 @@
            {% if user.is_authenticated %}
 
                 <div class="col-md-6 search-container">
-                    <form  >
+                    <form  action="search" method="get">
                             <div class="input-group col-xs-offset-3 col-xs-7 row ">
                                 <!--<div class="col-lg-offset-2 col-lg-6 no-padding">-->
-                                    <input type="text" class="form-control" name="search" id="top-search">
+                                <input type="text" class="form-control" name="search" id="top-search">
                                 <!--</div>-->
                                 <span class="input-group-btn">
                                     <button  type="submit" class="btn btn-warning">Search</button>
