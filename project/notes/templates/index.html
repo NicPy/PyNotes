@@ -48,7 +48,7 @@
             <div class="col-md-4 recent-notes-section">
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
                 <div class="all-notes-heading">
-                    <p>All notes<span class="glyphicon glyphicon-list-alt"></span></p>
+                    <p>Last notes<span class="glyphicon glyphicon-list-alt"></span></p>
                 </div>
 
 
@@ -62,7 +62,7 @@
                             <!--<span>{{note.note_text |truncatechars:25}}</span>-->
                         </div>
                          <!--"/notes/{{note.id}}"-->
-                        <div class="col-md-1">
+                        <div class="col-md-2 no-padding">
                             <a class="btn btn-danger" href="{% url 'note_remove' pk=note.pk %}">
                                 <span class="glyphicon glyphicon-remove	Try it"></span>
                             </a>

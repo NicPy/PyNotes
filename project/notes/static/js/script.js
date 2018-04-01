@@ -19,10 +19,12 @@ $('.action-section .all-notes-heading').click(function(){
 
 $('.folders-section .repr').click(function(){
 
+//
+//    $(this).find('+ .wrapper').slideToggle( "slow", function(){
+//
+//    });
 
-    $(this).find('+ .wrapper').slideToggle( "slow", function(){
-
-    });
+    $(this).find('+ .wrapper').slideToggle('normal');
 
     var classs = $(this).find(' span').attr('class');
     if (classs == 'glyphicon glyphicon-folder-close'){

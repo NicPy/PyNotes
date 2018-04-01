@@ -21,7 +21,7 @@ def index(request):
     if not request.user.is_authenticated:
         username = request.user.username
         return redirect('login_view')
-
+    
     else:
 
         if request.method == 'POST' and 'add_note' in request.POST:
@@ -84,6 +84,8 @@ def note_remove(request, pk):
     return redirect('/notes/')
 
 def signup(request):
+    if request.user is not None:  # and user.is_active:
+        return redirect("/notes")
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -102,6 +104,8 @@ def logout_view(request):
 
     return redirect('/notes/')
 def login_view(request):
+    #
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -110,7 +114,11 @@ def login_view(request):
         if user is not None: # and user.is_active:
             auth.login(request, user)
             return redirect("/notes")
+    # if request.user is not None:  # and user.is_active:
+        # return redirect("/notes")
     else:
+        if request.user is not None:  # and user.is_active:
+            return redirect("/notes")
         return render(request, "login_form.html")
 
 
