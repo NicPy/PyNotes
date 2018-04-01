@@ -13,7 +13,7 @@ Here is what you need to do ( **It is very simple**):
 
 ## Good Luck
 
-####Trouble shooting steps:
+**Trouble shooting steps:**
 1. Use python3 for virtualenv 
 2. Ask *Goolge* or *Stackoverflow* directly
 3. Write me on allmotofb@gmail.com
